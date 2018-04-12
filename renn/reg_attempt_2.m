@@ -9,7 +9,6 @@ for i = 1:length(genres)
     num_to_gen = length(X); % double the number of points
     chart_title = "Interested and Attending for " + genres(i);
     linreg = fitlm(X, Y);
-    RMSE = linreg.RMSE; % Root of mean squared error
     mu = mean(X);
     sigma = std(X);
     
@@ -29,11 +28,11 @@ for i = 1:length(genres)
     hold on;
     scatter(zPred(:,1), zPred(:,2), 25, 'MarkerEdgeColor',[0 .5 .5]);
     hold off;
-    xlabel('Attending')
-    ylabel('Interested')
+    xlabel('Attending');
+    ylabel('Interested');
     title(chart_title);
     
     % Write CSV
-    csvwrite("ALL " + chart_title + ".csv",[Z;zPred]);
-    csvwrite("predicted_attending_interested_" + genres(i) + ".csv", zPred);
+%     csvwrite("ALL " + chart_title + ".csv",[Z;zPred]);
+%     csvwrite("predicted_attending_interested_" + genres(i) + ".csv", zPred);
 end

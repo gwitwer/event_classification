@@ -15,7 +15,7 @@ for i = 1:length(genres)
     sigma = std(X);
     
     for j = 1:num_to_gen
-        while xPred(j) <= 0
+        while xPred(j) <= 0 
             % fix for negative random values
             xPred(j) = normrnd(mean(X), std(X));
         end
@@ -46,6 +46,6 @@ for i = 1:length(genres)
     title(chart_title);
     % NOTE: reversed order of X and Y here to get back to "attending, interested"
     % pattern for the CSV!
-    csvwrite("ALL " + chart_title + ".csv",[[Y;yPred],[X;xPred]]);
-    csvwrite("ONLY PREDICTED " + chart_title + ".csv",[yPred,xPred]);
+%     csvwrite("ALL " + chart_title + ".csv",[[Y;yPred],[X;xPred]]);
+%     csvwrite("ONLY PREDICTED " + chart_title + ".csv",[yPred,xPred]);
 end

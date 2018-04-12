@@ -1,0 +1,63 @@
+filenames = ["hiphop", "electronic", "rock", "other", "all"];
+
+figure;
+for i = 1:length(filenames)
+    fn = filenames(i);
+    if fn == "rock" % special case for rock -- does better when using all.
+        fn = "all"
+    end
+    D = csvread("attending_interested_" + fn + ".csv");
+    X = D(:,1:end-1);
+    Y = D(:,end);
+    H0 = [];
+    H1 = [];
+    
+    for j = 1:length(D)
+        if Y(j) == 0
+            H0 = [H0; X(j,:)];
+        else
+            H1 = [H1; X(j,:)];
+        end
+    end
+    
+    from_h0 = mvnpdf(X, mean(H0), cov(H0));
+    from_h1 = mvnpdf(X, mean(H1), cov(H1));
+    
+    h_diffs = (from_h1 - from_h0) > 0;
+    ["Accuracy of " + filenames(i); sum(h_diffs == Y) / length(Y)]
+    
+%     subplot(2,3,i);
+%     v = round(X / 10) * 10;
+%     hist3(v);
+%     xlabel('Attending');
+%     ylabel('Interested');
+%     zlabel('Frequency');
+%     title("Bivariate frequency (rounded to nearest 10) for " + filenames(i) + " events");
+    
+    if (filenames(i) ~= "all")
+        P_D = csvread("predicted_attending_interested_" + filenames(i) + ".csv");
+        P_X = P_D(:,1:end);
+        
+        from_h0 = mvnpdf(P_X, mean(H0), cov(H0));
+        from_h1 = mvnpdf(P_X, mean(H1), cov(H1));
+
+        pred_h_diffs = (from_h1 - from_h0) > 0;
+        subplot(2,2,i);
+        
+        combined_X = [X;P_X];
+        v = round(combined_X / 10) * 10;
+        hist3(v);
+        xlabel('Attending');
+        ylabel('Interested');
+        zlabel('Frequency');
+        title("Bivariate frequency (rounded to nearest 10) for " + filenames(i) + " events");
+        
+        % write new values
+        csvwrite("predicted_attending_interested_" + filenames(i) + ".csv", [P_X, pred_h_diffs]);
+        
+        % Let's collect all the data and test the new accuracy...
+        P_X_
+
+    end
+    
+end
