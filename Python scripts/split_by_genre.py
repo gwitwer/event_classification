@@ -1,6 +1,6 @@
 import csv
 
-f = open('Venue_IQ_data_4-1.csv', 'r')
+f = open('../combined_new_master_list.csv', 'r')
 reader = csv.reader(f, delimiter=',')
 lines = []
 for row in reader:
@@ -15,13 +15,13 @@ ai_by_genre = {
 }
 
 for line in lines:
-    genre = line[8]
+    genre = line[3]
     if genre == 'latin':
         genre = 'hiphop'
     try:
-        dow = int(line[2])
-        attending = int(line[9])
-        interested = int(line[10])
+        dow = int(line[1])
+        attending = int(line[4])
+        interested = int(line[5])
         try:
             ai_by_genre[genre].append([attending, interested, dow])
         except KeyError:

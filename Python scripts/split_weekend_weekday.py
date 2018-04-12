@@ -1,6 +1,6 @@
 import csv
 
-f = open('Venue_IQ_data_4-1.csv', 'r')
+f = open('../combined_new_master_list.csv', 'r')
 reader = csv.reader(f, delimiter=',')
 lines = []
 for row in reader:
@@ -11,9 +11,9 @@ dow_split = [[], []]
 
 for line in lines:
     try:
-        dow = int(line[2])
-        attending = int(line[9])
-        interested = int(line[10])
+        dow = int(line[1])
+        attending = int(line[4])
+        interested = int(line[5])
         try:
             dow_split[dow].append([attending, interested, dow])
         except KeyError:
@@ -29,3 +29,10 @@ for d in range(len(dow_split)):
     for row in dow_split[d]:
         writer.writerow(row)
     f.close()
+
+f = open('attending_interested_all.csv', 'w')
+for d in range(len(dow_split)):
+    writer = csv.writer(f, dialect="excel", delimiter=",")
+    for row in dow_split[d]:
+        writer.writerow(row)
+f.close()

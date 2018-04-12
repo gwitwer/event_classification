@@ -32,7 +32,7 @@ for i = 1:length(genres)
     ylabel('Interested');
     title(chart_title);
     
-    % Write CSV
-%     csvwrite("ALL " + chart_title + ".csv",[Z;zPred]);
+%     % Write CSV
+%     % csvwrite("ALL " + chart_title + ".csv",[Z;zPred]);
 %     csvwrite("predicted_attending_interested_" + genres(i) + ".csv", zPred);
 end
