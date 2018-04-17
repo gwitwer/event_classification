@@ -65,8 +65,8 @@ for i = 1:length(filenames)
         title("Actual + predicted frequency (rounded to nearest 10) for " + filenames(i) + " events");
 
 
-        % write new values
-        csvwrite("predicted_attending_interested_" + filenames(i) + ".csv", [P_X, pred_h_diffs]);
+%         % write new values
+%         csvwrite("predicted_attending_interested_" + filenames(i) + ".csv", [P_X, pred_h_diffs]);
     end
     
 end
