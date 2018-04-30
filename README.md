@@ -1,17 +1,27 @@
 ### Machine Learning Project
-# Event Classification using Matlab, Python
+# Event Classification using MATLAB, Python
 
-These files have not been organized yet.
+These files have been organized into 3 folders, with the root directory holding our data CSVs.
 
-As they become so moving forward, please update this file with appropriate descriptions.
+### Data files
+The original data can be found in ORIGINAL_DATA.csv
+The final data can be found in either of the two CSVs beginning "wes_classified"
 
-The files "attending_interested_[category].csv" contain the data.
+### MATLAB scripts
+The MATLAB scripts folder contains all of our real classification and preprocessing work.
 
-The data in these files are CSVs with columns attending, interested, day of week classification
+### Python scripts
+Python scripts contains files primarily used for splitting the data sets and writing them to CSV files.
+They are essentially "helper scripts".
 
+### images
+The images folder contains all of the images we generated for our presentation and report, as well as some extras we didn't use.
+
+### Other notes
 The genre categories (electronic, rock, hiphop, other), taken together, represent the entire data set.
 
 The day of week categories (weekday, weekend), taken together, also represent the entire data set.
 
-That is, there are two ways to combine these files to get the entire data set.
-Note: put them into separate directories to make this more apparent.
+That is, there are two ways to combine files to get the entire data set.
+The split weekday / weekend CSV files can be found in MATLAB scripts.
+The CSVs split by genre can be found in the root directory (although they only have a select number of features)
