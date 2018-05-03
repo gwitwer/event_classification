@@ -2,6 +2,7 @@
 # Event Classification using MATLAB, Python
 
 These files have been organized into 3 folders, with the root directory holding our data CSVs.
+The final paper coming out of this project can be found in the PDF "EventClassificationReport"
 
 ### Data files
 The original data can be found in ORIGINAL_DATA.csv
